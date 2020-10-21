@@ -39,24 +39,50 @@ Nota: o módulo padrão do python 'random' conta com o random.choice(list),
 método que escolhe um elemento aleatório de uma lista não vazia.
 """
 
-import random
-import sys
+import random, re, sys
+
+
+
+from collections import defaultdict
 
 
 def mimic_dict(filename):
   """Retorna o dicionario imitador mapeando cada palavra para a lista de
   palavras subsequentes."""
     # +++ SUA SOLUÇÃO +++
-  return
+  words = read_content(filename)
+  word_dict = get_dict(words)
+  return word_dict
 
+def read_content(filename):
+  with open(filename) as file:
+      content = file.read().lower().replace('\n', ' ').replace('  ', ' ').split()
+  return content
+
+def get_dict(words):
+  dict_words=defaultdict(list)
+  dict_words[''] = words[0]
+  dict_words[words[-1]] = ['']
+  for key, word in zip(words, words[1:]):
+    dict_words[key].append(word)
+
+
+  return dict_words
 
 def print_mimic(mimic_dict, word):
   """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
     # +++ SUA SOLUÇÃO +++
-  return
-
-
-# Chama mimic_dict() e print_mimic()
+  result = ' '.join([word, 'we'])
+  last_word = 'we'
+  for _ in range(198):
+    if type(mimic_dict[last_word]) is list:
+      new_word = (random.choice(mimic_dict[last_word]))
+    else:
+      new_word = mimic_dict[last_word]
+    result += ''.join([' ', new_word])
+    last_word = new_word
+  count = len(result.split(' '))
+  return print(result, ' ', count)
 def main():
   if len(sys.argv) != 2:
     print('Utilização: ./14_mimic.py file-to-read')

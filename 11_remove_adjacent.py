@@ -10,8 +10,14 @@ Irá retornar: [1, 2, 3]
 
 def remove_adjacent(nums):
     # +++ SUA SOLUÇÃO +++
-    return
-
+    '''
+    nums_ = []
+    for num in zip(nums, nums[1:]+[None]):
+        if num[0] != num[1]:
+            nums_.append(num[0])
+    return nums_
+    '''
+    return [num[0] for num in zip(nums, nums[1:]+[None]) if num[0] != num[1]]
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -38,3 +44,4 @@ if __name__ == '__main__':
     test(remove_adjacent, [2, 2, 3, 3, 3], [2, 3])
     test(remove_adjacent, [], [])
     test(remove_adjacent, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+

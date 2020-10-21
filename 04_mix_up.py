@@ -11,12 +11,16 @@ Exemplo:
 
 Assuma que a e b tem tamanho 2 ou maior.
 """
-
+import time
 def mix_up(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
-
-
+    ''' Aternativa
+    _ = a[:2]
+    a = b[:2] + a[2:]
+    b = _ + b[2:]
+    return '%s %s' % (a, b)
+    '''
+    #Extra  if len(a)>=2 and len(b)>=2 else ' '.join([a,b])
+    return ' '.join([(''.join([b[:2], a[2:]])), (''.join([a[:2], b[2:]]))]) if len(a)>=2 and len(b)>=2 else ' '.join([a,b])
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
 def test(f, in_, expected):
@@ -42,3 +46,5 @@ if __name__ == '__main__':
     test(mix_up, ('dog', 'dinner'), 'dig donner')
     test(mix_up, ('gnash', 'sport'), 'spash gnort')
     test(mix_up, ('pezzy', 'firm'), 'fizzy perm')
+    #Extra
+    test(mix_up,('m','b'), 'm b')

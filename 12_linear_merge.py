@@ -11,7 +11,8 @@ A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 
 def linear_merge(list1, list2):
     # +++ SUA SOLUÇÃO +++
-    return
+    from heapq import merge
+    return sorted(merge(list1,list2))
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

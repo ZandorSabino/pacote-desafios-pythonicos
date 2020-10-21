@@ -12,7 +12,22 @@ a-frente + b-frente + a-trás + b-trás
 """
 def front_back(a, b):
     # +++ SUA SOLUÇÃO +++
-    return
+    import math
+    if len(a)%2 == 0:
+        a_frente = a[:math.ceil(len(a)/2)]
+        a_tras = a[math.ceil(len(a)/2):]
+    else:
+        a_frente = a[:math.ceil(len(a) / 2)]
+        a_tras = a[math.ceil(len(a) / 2):]
+
+    if len(b) % 2 == 0:
+        b_frente = b[:math.ceil(len(b) / 2)]
+        b_tras = b[math.ceil(len(b) / 2):]
+    else:
+        b_frente = b[:math.ceil(len(b) / 2)]
+        b_tras = b[math.ceil(len(b) / 2):]
+
+    return ''.join([a_frente, b_frente, a_tras, b_tras])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

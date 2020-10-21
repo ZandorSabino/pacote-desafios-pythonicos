@@ -11,9 +11,17 @@ Retorne o resultado da string.
 """
 
 def verbing(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    '''Alternativa
+    if len(s) >= 3:
+        if 'ing' in s[-3:]:
+            s = ''.join([s,'ly'])
+        else:
+            s = ''.join([s,'ing'])
+    return s
+    '''
 
+    #return s if len(s) < 3 else ''.join([s,'ly']) if 'ing' in s[-3:] else ''.join([s,'ing'])
+    return s if len(s) < 3 else ''.join([s,'ly']) if s.endswith('ing') else ''.join([s,'ing'])
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 

@@ -13,8 +13,18 @@ antes de combina-las.
 
 def front_x(words):
     # +++ SUA SOLUÇÃO +++
-    return
-
+#Utilizandor lambda
+    words.sort(key=lambda x: x.replace('x', ' ') if x[0] == 'x' else x if ' ' not in x else x.replace(' ', ''))
+    return words
+#Desafio inicial
+''' 
+    wordx = [word for word in words if word[0] == 'x']
+    words_ = [word for word in words if word not in wordx]
+    wordx.sort()
+    words_.sort()
+    words = wordx + words_
+    return words
+'''
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -43,3 +53,5 @@ if __name__ == '__main__':
          ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
     test(front_x, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
          ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
+    test(front_x, [' after', 'mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
+         ['xanadu', 'xyz',  'aardvark', ' after', 'apple', 'mix'])
